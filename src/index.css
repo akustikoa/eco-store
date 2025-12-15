@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f5f5;
+  color: #555;
+}
+
+/* #region --- Card styles --- */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  padding: 20px;
+  justify-items: center;
+}
+
+.product-list .productCard:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  transition: all 0.1s ease-in-out;
+}
+
+.productCard {
+  width: 260px;
+  max-height: auto;
+  display: block;
+  padding: 14px 14px 4px 14px;
+  margin: 16px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: start;
+}
+
+.productCard-imgWrapper {
+  height: 240px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.productCard-img {
+  width: 100%;
+  object-fit: cover;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.productCard-title {
+  padding: 14px 0 8px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 1rem; /* mida constant i segura */
+  line-height: 1.3rem; /* altura EXACTA per línia */
+  max-height: calc(1.3rem * 2.6); /* 2 línies = 2 * line-height */
+  font-weight: 500;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.productCard-info {
+  padding: 12px 0 0 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.productCard-co2Saved,
+.productCard-waterSaved {
+  background-color: rgb(234, 234, 234);
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin: 2px 6px 6px 0;
+}
+
+.productCard-price {
+  padding: 4px 0;
+  font-size: 20px;
+}
+
+.productCard-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 0 8px 0;
+  margin-top: 12px;
+}
+
+.productCard-footer-left {
+  font-size: 20px;
+}
+
+.productCard-footer-right {
+  display: flex;
+  gap: 10px;
+}
+/* #endregion Products */
+
+/* #region --- Icon styles --- */
+.green-leaf {
+  color: #34a853;
+}
+/* #endregion Icon styles */
