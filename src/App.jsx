@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import ProductList from './Components/ProductList';
+import Cart from './Components/Cart';
 import { enhanceProductWithEcoData } from './utils/productUtils';
+import Header from './Components/Header';
+import { CartProvider } from './context/CartContext';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -20,12 +24,16 @@ const App = () => {
 
     fetchedProducts();
   }, []);
-
   return (
-    <>
-      <ProductList products={products} />
-    </>
+    <CartProvider>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path='/' element={<ProductList products={products} />} />
+          <Route path='/cart' element={<Cart />} />
+        </Routes>
+      </BrowserRouter>
+    </CartProvider>
   );
 };
-
 export default App;
