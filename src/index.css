@@ -112,7 +112,7 @@ body {
 .cart-item-left {
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  gap: 22px;
   flex: 1;
   min-width: 0; /* evita desbordament */
 }
@@ -126,7 +126,7 @@ body {
 }
 
 .cart-item p {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .cart-quantity {
@@ -206,7 +206,7 @@ body {
 /* #region --- Card styles --- */
 .product-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
   padding: 20px;
   justify-items: center;
@@ -219,7 +219,7 @@ body {
 }
 
 .productCard {
-  width: 260px;
+  width: 240px;
   max-height: auto;
   display: block;
   padding: 14px 14px 4px 14px;
@@ -268,9 +268,10 @@ body {
 .productCard-co2Saved,
 .productCard-waterSaved {
   background-color: rgb(234, 234, 234);
-  padding: 4px 8px;
+  padding: 2px 6px;
   border-radius: 4px;
   margin: 2px 6px 6px 0;
+  font-size: 13px;
 }
 
 .productCard-price {
@@ -294,6 +295,29 @@ body {
   display: flex;
   gap: 10px;
 }
+
+.productCard-addToCart,
+.productCard-removeFromCart {
+  border: none;
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+
+.productCard-addToCart:hover {
+  background-color: #34a853;
+  color: #fff;
+}
+
+.productCard-removeFromCart:hover {
+  background-color: #34a853;
+  color: #fff;
+}
+
 /* #endregion Products */
 
 /* #region --- Icon styles --- */

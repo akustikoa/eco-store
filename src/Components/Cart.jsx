@@ -6,6 +6,16 @@ const Cart = () => {
     0
   );
 
+  const totalCO2 = cart.reduce((sum, producte) => {
+    const co2Value = parseFloat(producte.co2Saved.replace('kg', '').trim());
+    return sum + (co2Value * producte.quantity || 1);
+  }, 0);
+
+  const totalWater = cart.reduce((sum, producte) => {
+    const waterValue = parseFloat(producte.waterSaved.replace('L', '').trim());
+    return sum + (waterValue * producte.quantity || 1);
+  }, 0);
+
   return (
     <div className='cart'>
       <h2>
@@ -46,7 +56,23 @@ const Cart = () => {
           </div>
           <div className='cart-summary'>
             <h4>
-              Total: <span> {total.toFixed(2)}€</span>
+              Total Price: <span> {total.toFixed(2)}€</span>
+            </h4>
+            <h4>
+              Total CO2 Saved:{' '}
+              <span>
+                {' '}
+                {totalCO2.toFixed(2)}Kg{' '}
+                <i className='fa-solid fa-leaf green-leaf'></i>
+              </span>
+            </h4>
+            <h4>
+              Total Water Saved:{' '}
+              <span>
+                {' '}
+                {totalWater.toFixed(2)}L{' '}
+                <i className='fa-solid fa-leaf green-leaf'></i>
+              </span>
             </h4>
             <button className='checkout-btn'>Checkout</button>
           </div>
