@@ -79,6 +79,23 @@ body {
 
 /* #endregion --- Header styles --- */
 
+/* #region --- Contenidor dels filtres ---*/
+.filter-container select {
+  padding: 8px 6px;
+  border-radius: 4px;
+  background-color: rgb(234, 234, 234);
+  color: #555;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  margin: 0;
+}
+/* #endregion filters */
+
 /* #region --- Cart styles --- */
 .cart {
   padding: 20px;
@@ -307,7 +324,6 @@ body {
   transition: background-color 0.2s ease-in-out;
 }
 
-
 .productCard-addToCart:hover {
   background-color: #34a853;
   color: #fff;
@@ -325,3 +341,6 @@ body {
   color: #34a853;
 }
 /* #endregion Icon styles */
+
+
+
