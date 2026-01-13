@@ -1,5 +1,6 @@
 import { useCart } from './UseCart';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 const Header = ({
   categoryFilter,
@@ -8,6 +9,33 @@ const Header = ({
   setEcoScoreFilter,
 }) => {
   const { cart } = useCart();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Funció per tancar el menú
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+  // Efecte per ajustar el margin quan s'obre/tanca el menú
+  useEffect(() => {
+    const content =
+      document.querySelector('.product-list') ||
+      document.querySelector('main') ||
+      document.body;
+
+    if (menuOpen) {
+      const nav = document.querySelector('nav');
+      const menuHeight = nav ? nav.offsetHeight : 250;
+      content.style.marginTop = `${menuHeight + 100}px`;
+    } else {
+      content.style.marginTop = '';
+    }
+
+    return () => {
+      content.style.marginTop = '';
+    };
+  }, [menuOpen]);
+
   const totalItems = cart.reduce(
     (acc, producte) => acc + (producte.quantity || 1),
     0
@@ -29,18 +57,65 @@ const Header = ({
     { value: 'D', label: ' EcoScore D (D, D+)' },
   ];
 
+  // Funció per manejar els canvis als selects (que també tanqui el menú)
+  const handleCategoryChange = (e) => {
+    setCategoryFilter(e.target.value);
+    closeMenu(); // Tanca el menú quan canvies categoria
+  };
+
+  const handleEcoScoreChange = (e) => {
+    setEcoScoreFilter(e.target.value);
+    closeMenu(); // Tanca el menú quan canvies EcoScore
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const nav = document.querySelector('nav');
+      const menuToggle = document.querySelector('.menu-toggle');
+
+      if (
+        menuOpen &&
+        nav &&
+        !nav.contains(event.target) &&
+        menuToggle &&
+        !menuToggle.contains(event.target)
+      ) {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [menuOpen]);
+
   return (
     <>
       <header>
-        <h1 className='Title'>
-          <i className='fa-solid fa-leaf green-leaf'></i> ECO STORE
+        <h1 className='title'>
+          <i className='fa-solid fa-leaf green-leaf leaf-header'></i> ECO STORE
         </h1>
 
-        <nav>
+        <Link to='/cart' className='mobile-cart-count'>
+          <i className='cart-responsive fa-solid fa-cart-shopping'></i>
+          {totalItems > 0 && <span className='cart-count'> {totalItems}</span>}
+        </Link>
+
+        <button
+          className='menu-toggle'
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label='Toggle menu'
+        >
+          <i className={menuOpen ? 'fas fa-times' : 'fas fa-bars'}></i>
+        </button>
+
+        <nav className={menuOpen ? 'active' : ''}>
           <div className='filter-container'>
             <select
               value={categoryFilter}
-              onChange={(e) => setCategoryFilter(e.target.value)}
+              onChange={handleCategoryChange} // Utilitza la nova funció
             >
               {categories.map((category) => (
                 <option key={category.value} value={category.value}>
@@ -53,7 +128,7 @@ const Header = ({
           <div className='filter-container'>
             <select
               value={ecoScoreFilter}
-              onChange={(e) => setEcoScoreFilter(e.target.value)}
+              onChange={handleEcoScoreChange} // Utilitza la nova funció
             >
               {ecoScoreGroups.map((group) => (
                 <option key={group.value} value={group.value}>
@@ -63,13 +138,27 @@ const Header = ({
             </select>
           </div>
 
-          <Link to='/' className='header-btn'>
+          <Link
+            to='/'
+            className='header-btn'
+            onClick={closeMenu} // Tanca el menú en clicar
+          >
             Home
           </Link>
-          <Link to='/cart' className='header-btn'>
+
+          <Link
+            to='/cart'
+            className='header-btn'
+            onClick={closeMenu} // Tanca el menú en clicar
+          >
             Cart
           </Link>
-          <div className='cart-icon'>
+
+          <div
+            className='cart-icon'
+            onClick={closeMenu}
+            style={{ cursor: 'pointer' }}
+          >
             <i className='fa-solid fa-cart-shopping'></i>
             <span className='cart-count'> {totalItems}</span>
           </div>
