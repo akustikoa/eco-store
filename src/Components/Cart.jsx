@@ -39,7 +39,7 @@ const Cart = () => {
                     <p className='productCard-waterSaved'>
                       Water Saved: {product.waterSaved}
                     </p>
-                    <p>Price: {product.price}€</p>
+                    <p>Price: {product.price.toFixed(2)}€</p>
                   </div>
                 </div>
                 <div className='cart-item-right'>

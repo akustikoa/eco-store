@@ -94,9 +94,12 @@ const Header = ({
   return (
     <>
       <header>
-        <h1 className='title'>
-          <i className='fa-solid fa-leaf green-leaf leaf-header'></i> ECO STORE
-        </h1>
+        <Link to='/' className='logo-link'>
+          <h1 className='title'>
+            <i className='fa-solid fa-leaf green-leaf leaf-header'></i> ECO
+            STORE
+          </h1>
+        </Link>
 
         <Link to='/cart' className='mobile-cart-count'>
           <i className='cart-responsive fa-solid fa-cart-shopping'></i>
@@ -159,8 +162,10 @@ const Header = ({
             onClick={closeMenu}
             style={{ cursor: 'pointer' }}
           >
-            <i className='fa-solid fa-cart-shopping'></i>
-            <span className='cart-count'> {totalItems}</span>
+            <Link to='/cart' className='cart-count-header-desktop'>
+              <i className='fa-solid fa-cart-shopping'></i>
+              <span className='cart-count'> {totalItems}</span>
+            </Link>
           </div>
         </nav>
       </header>
