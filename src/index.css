@@ -24,15 +24,21 @@ header {
 
 .cart-count-header-desktop {
   text-decoration: none;
-  color: #333;
-  font-size: 15px;
+  color: #777;
+  font-size: 17px;
   font-weight: bold;
 }
 
 .mobile-cart-count {
   display: none;
   position: relative;
-  margin-right: 10px;
+  margin-right: 6px;
+}
+
+.mobile-home {
+  display: none;
+  position: relative;
+  margin-right: 50px;
 }
 
 .mobile-cart-count .cart-count {
@@ -53,7 +59,8 @@ header {
 }
 
 .cart-responsive {
-  font-size: 21px;
+  font-size: 19px;
+  color: #555;
 }
 
 .mobile-cart-count:link,
@@ -63,10 +70,17 @@ header {
   color: inherit;
 }
 
+.mobile-home:link,
+.mobile-home:visited,
+.mobile-home:hover,
+.mobile-home:active {
+  color: inherit;
+}
+
 .title {
   font-size: 24px;
   font-weight: 700;
-  color: #333;
+  color: #555;
   display: flex;
   align-items: center;
 }
@@ -134,7 +148,7 @@ body {
 
 /* #endregion --- Header styles --- */
 
-/* #region --- Contenidor dels filtres ---*/
+/* #region --- Filters container styles ---*/
 .filter-container select {
   padding: 8px 6px;
   border-radius: 4px;
@@ -456,6 +470,24 @@ body {
 .green-leaf {
   color: #34a853;
 }
+
+.blue-droplet {
+  color: #0077ad;
+}
+
+.yellow-star {
+  color: #ffcc00;
+}
+
+.productCard-waterSaved i.blue-droplet {
+  margin-left: 2px;
+  font-size: 11px;
+}
+
+.productCard-co2Saved i.green-leaf {
+  margin-left: 2px;
+  font-size: 12px;
+}
 /* #endregion Icon styles */
 
 /* #region --- Footer --- */
@@ -478,7 +510,9 @@ footer a {
   text-decoration: none;
   padding: 5px 7px;
   font-size: 20px;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 footer a:hover {
@@ -502,11 +536,11 @@ footer i.fab {
 
 footer span {
   color: #555;
-  font-size: 18px;
+  font-size: 19px;
 }
 /* #endregion Footer --- */
 
-/* #region --- responsive --- */
+/* #region --- Responsive --- */
 
 /* Botó menú hamburguesa - Ocult per defecte (desktop) */
 .menu-toggle {
@@ -549,7 +583,8 @@ footer span {
     font-size: 28px;
   }
 
-  .mobile-cart-count {
+  .mobile-cart-count,
+  .mobile-home {
     display: block;
     position: absolute;
     right: 75px;
@@ -652,3 +687,126 @@ footer span {
   }
 }
 /* #endregion responsive */
+
+/* #region --- Modal Container --- */
+
+/* Modal container  */
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; /* Canviat de 100% a 100vh per seguretat */
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(2px);
+}
+
+.product-modal {
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+/* Botó tancar */
+.btn-close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    transform 0.2s;
+  background: none;
+  border: none;
+  padding: 5px;
+}
+
+.btn-close-modal:hover {
+  color: #000;
+  transform: scale(1.1);
+}
+
+/* Títol */
+.product-modal h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #555;
+  font-size: 1.5rem;
+  padding-right: 30px; /* Espai per al botó tancar */
+}
+
+/* Text descriptiu */
+.product-modal p {
+  margin-bottom: 12px;
+  line-height: 1.5;
+  color: #555;
+}
+
+/* Preu destacat */
+.product-modal p:nth-of-type(2) {
+  /* El tercer p (price) si mantens l'ordre */
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Imatge (si canvies <p> per <img>) */
+.product-modal img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: #8d8d8d1c solid 1px;
+  margin-top: 15px;
+  padding: 20px;
+  background-color: #f5f5f581;
+}
+
+.eco-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  opacity: 85%;
+  margin-bottom: 15px;
+  gap: 25px;
+  font-size: 14px;
+}
+
+/* Animació d'entrada */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .product-modal {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .product-modal h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* #endregion --- Moal Container --- */

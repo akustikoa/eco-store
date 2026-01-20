@@ -8,9 +8,11 @@ const ProductCard = ({
   ecoScore,
   co2Saved,
   waterSaved,
+  onProductClick,
 }) => {
-  const { addToCart, removeFromCart } = useCart(); //importo funcions del context
-  //creem el producte per passar-lo al Cart
+  const { addToCart, removeFromCart } = useCart(); //import from context
+
+  //create product object
   const product = {
     id,
     description,
@@ -23,7 +25,7 @@ const ProductCard = ({
   };
 
   return (
-    <div className='productCard'>
+    <div onClick={() => onProductClick(product)} className='productCard'>
       <div className='productCard-imgWrapper'>
         <img
           className='productCard-img'
@@ -34,8 +36,13 @@ const ProductCard = ({
       </div>
       <h3 className='productCard-title '>{title}</h3>
       <div className='productCard-info'>
-        <p className='productCard-co2Saved'>CO2 Saved: {co2Saved}</p>
-        <p className='productCard-waterSaved'>Water Saved: {waterSaved}</p>
+        <p className='productCard-co2Saved'>
+          CO2 Saved: {co2Saved} <i className='fa-solid fa-leaf green-leaf'></i>
+        </p>
+        <p className='productCard-waterSaved'>
+          Water Saved: {waterSaved}{' '}
+          <i className='fa-solid fa-droplet blue-droplet'></i>
+        </p>
         <p className='productCard-price'>{price.toFixed(2)}€ </p>
         <div className='productCard-footer'>
           <div className='productCard-footer-left'>

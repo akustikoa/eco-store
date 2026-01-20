@@ -1,8 +1,17 @@
 import { useEffect } from 'react';
 import { createContext, useState } from 'react';
+
 const CartContext = createContext();
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    try {
+      const savedCart = localStorage.getItem('ecoStoreCart');
+      return savedCart ? JSON.parse(savedCart) : [];
+    } catch (error) {
+      console.error('Error carregant cart:', error);
+      return [];
+    }
+  });
 
   const addToCart = (product) => {
     const existingProduct = cart.find((item) => item.id === product.id);
@@ -41,7 +50,11 @@ export const CartProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log(cart);
+    try {
+      localStorage.setItem('ecoStoreCart', JSON.stringify(cart));
+    } catch (error) {
+      console.error('Error guardant cart:', error);
+    }
   }, [cart]);
 
   return (

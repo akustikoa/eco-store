@@ -23,7 +23,7 @@ const Cart = () => {
       </h2>
 
       {cart.length === 0 ? (
-        <p className='message-empty'>El carret de compra està buit...</p>
+        <p className='message-empty'>Your Cart is empty</p>
       ) : (
         <>
           <div className='cart-items'>
@@ -71,7 +71,7 @@ const Cart = () => {
               <span>
                 {' '}
                 {totalWater.toFixed(2)}L{' '}
-                <i className='fa-solid fa-leaf green-leaf'></i>
+                <i className='fa-solid fa-droplet blue-droplet'></i>
               </span>
             </h4>
             <button className='checkout-btn'>Checkout</button>

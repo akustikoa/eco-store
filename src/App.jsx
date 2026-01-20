@@ -9,7 +9,6 @@ import Footer from './Components/Footer';
 
 const App = () => {
   const [products, setProducts] = useState([]);
-
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [ecoScoreFilter, setEcoScoreFilter] = useState('all');
 
@@ -20,7 +19,6 @@ const App = () => {
         const data = await res.json();
         const enhancedData = data.map(enhanceProductWithEcoData);
         setProducts(enhancedData);
-        console.log(enhancedData);
       } catch (error) {
         console.error('Error fetching products', error);
       }
@@ -36,7 +34,7 @@ const App = () => {
     }
 
     if (ecoScoreFilter !== 'all') {
-      //agafem la primera lletra
+      //agafem la primera lletra del product
       const productFirstLetter = product.ecoScore.charAt(0).toLowerCase();
 
       // forcem minuscules al filter usuari

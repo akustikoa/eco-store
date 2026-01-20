@@ -11,12 +11,12 @@ const Header = ({
   const { cart } = useCart();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Funció per tancar el menú
+  // Tancar menú
   const closeMenu = () => {
     setMenuOpen(false);
   };
 
-  // Efecte per ajustar el margin quan s'obre/tanca el menú
+  // marge superior obrir tancar menu responsive
   useEffect(() => {
     const content =
       document.querySelector('.product-list') ||
@@ -101,11 +101,17 @@ const Header = ({
           </h1>
         </Link>
 
+        {/* Menu responsive */}
+        <Link to='/' className='mobile-home'>
+          <i className='cart-responsive fa-solid fa-home'></i>
+        </Link>
+
         <Link to='/cart' className='mobile-cart-count'>
           <i className='cart-responsive fa-solid fa-cart-shopping'></i>
           {totalItems > 0 && <span className='cart-count'> {totalItems}</span>}
         </Link>
 
+        {/* hamburger menu */}
         <button
           className='menu-toggle'
           onClick={() => setMenuOpen(!menuOpen)}
@@ -114,12 +120,10 @@ const Header = ({
           <i className={menuOpen ? 'fas fa-times' : 'fas fa-bars'}></i>
         </button>
 
+        {/* Menu hidden by default*/}
         <nav className={menuOpen ? 'active' : ''}>
           <div className='filter-container'>
-            <select
-              value={categoryFilter}
-              onChange={handleCategoryChange} // Utilitza la nova funció
-            >
+            <select value={categoryFilter} onChange={handleCategoryChange}>
               {categories.map((category) => (
                 <option key={category.value} value={category.value}>
                   {category.label}
@@ -129,10 +133,7 @@ const Header = ({
           </div>
 
           <div className='filter-container'>
-            <select
-              value={ecoScoreFilter}
-              onChange={handleEcoScoreChange} // Utilitza la nova funció
-            >
+            <select value={ecoScoreFilter} onChange={handleEcoScoreChange}>
               {ecoScoreGroups.map((group) => (
                 <option key={group.value} value={group.value}>
                   {group.label}
@@ -141,19 +142,11 @@ const Header = ({
             </select>
           </div>
 
-          <Link
-            to='/'
-            className='header-btn'
-            onClick={closeMenu} // Tanca el menú en clicar
-          >
+          <Link to='/' className='header-btn' onClick={closeMenu}>
             Home
           </Link>
 
-          <Link
-            to='/cart'
-            className='header-btn'
-            onClick={closeMenu} // Tanca el menú en clicar
-          >
+          <Link to='/cart' className='header-btn' onClick={closeMenu}>
             Cart
           </Link>
 
