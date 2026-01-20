@@ -49,6 +49,11 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const removeAllFromCart = (id) => {
+    const existingProduct = cart.filter((item) => item.id !== id);
+    setCart(existingProduct);
+  };
+
   useEffect(() => {
     try {
       localStorage.setItem('ecoStoreCart', JSON.stringify(cart));
@@ -58,7 +63,9 @@ export const CartProvider = ({ children }) => {
   }, [cart]);
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, removeAllFromCart }}
+    >
       {children}
     </CartContext.Provider>
   );

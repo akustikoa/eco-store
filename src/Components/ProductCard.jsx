@@ -10,7 +10,7 @@ const ProductCard = ({
   waterSaved,
   onProductClick,
 }) => {
-  const { addToCart, removeFromCart } = useCart(); //import from context
+  const { cart, addToCart, removeFromCart } = useCart(); //import from context
 
   //create product object
   const product = {
@@ -24,17 +24,22 @@ const ProductCard = ({
     waterSaved,
   };
 
+  const productInCart = cart.find((item) => item.id === id);
+  const productInCartQuantity = productInCart ? productInCart.quantity : 0;
+
   return (
-    <div onClick={() => onProductClick(product)} className='productCard'>
-      <div className='productCard-imgWrapper'>
-        <img
-          className='productCard-img'
-          src={image}
-          alt={title}
-          loading='lazy'
-        />
+    <div className='productCard'>
+      <div onClick={() => onProductClick(product)} className='btnProductClick'>
+        <div className='productCard-imgWrapper'>
+          <img
+            className='productCard-img'
+            src={image}
+            alt={title}
+            loading='lazy'
+          />
+        </div>
+        <h3 className='productCard-title '>{title}</h3>
       </div>
-      <h3 className='productCard-title '>{title}</h3>
       <div className='productCard-info'>
         <p className='productCard-co2Saved'>
           CO2 Saved: {co2Saved} <i className='fa-solid fa-leaf green-leaf'></i>
@@ -58,6 +63,9 @@ const ProductCard = ({
               }}
             >
               <i className='fa-solid fa-cart-plus'></i>
+              {productInCartQuantity > 0 && (
+                <span className='cart-count'> {productInCartQuantity}</span>
+              )}
             </button>
             <button
               className='productCard-removeFromCart'

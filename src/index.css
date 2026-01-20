@@ -350,6 +350,10 @@ body {
   text-align: start;
 }
 
+.btnProductClick {
+  cursor: pointer;
+}
+
 .productCard-imgWrapper {
   height: 240px;
   width: 100%;
@@ -419,6 +423,7 @@ body {
 
 .productCard-addToCart,
 .productCard-removeFromCart {
+  position: relative;
   border: none;
   font-size: 16px;
   padding: 4px 8px;
@@ -430,6 +435,23 @@ body {
   color: #555;
   user-select: none; /* Evita selecció de text */
   -webkit-tap-highlight-color: transparent; /* Elimina el color blau en mòbil */
+}
+
+.productCard-addToCart .cart-count{
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #2e7d32;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 16px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
 }
 
 /* Hover (desktop) */
@@ -460,6 +482,14 @@ body {
   .productCard-removeFromCart:hover {
     background-color: rgb(234, 234, 234);
     color: #555;
+  }
+
+  .productCard-addToCart:active,
+  .productCard-removeFromCart:active {
+    background-color: #2e7d32;
+    color: #fff;
+    transform: scale(0.97);
+    transition: background-color 0.9s; /* Més lent per veure-ho millor */
   }
 }
 
@@ -773,6 +803,11 @@ footer span {
   margin-top: 15px;
   padding: 20px;
   background-color: #f5f5f581;
+}
+
+.product-modal .price {
+text-align: right;
+margin-right: 15px;
 }
 
 .eco-info {

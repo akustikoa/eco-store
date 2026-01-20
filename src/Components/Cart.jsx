@@ -1,9 +1,9 @@
 import { useCart } from './UseCart';
 const Cart = () => {
-  const { cart, removeFromCart, addToCart } = useCart();
+  const { cart, removeFromCart, addToCart, removeAllFromCart } = useCart();
   const total = cart.reduce(
     (sum, producte) => sum + producte.price * producte.quantity || 1,
-    0
+    0,
   );
 
   const totalCO2 = cart.reduce((sum, producte) => {
@@ -49,6 +49,16 @@ const Cart = () => {
                     </button>
                     <span>{product.quantity}</span>
                     <button onClick={() => addToCart(product)}>+</button>
+                  </div>
+                  <div>
+                    <button
+                      className='productCard-removeFromCart'
+                      onClick={() => {
+                        removeAllFromCart(product.id);
+                      }}
+                    >
+                      <i className='fa-regular fa-trash-can'></i>
+                    </button>
                   </div>
                 </div>
               </div>

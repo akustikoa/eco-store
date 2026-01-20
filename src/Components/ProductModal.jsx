@@ -2,8 +2,8 @@ const ProductModal = ({ product, onClose }) => {
   console.log('Modal rep', product);
 
   return (
-    <div className='modal-container'>
-      <div className='product-modal'>
+    <div onClick={() => onClose()} className='modal-container'>
+      <div onClick={(e) => e.stopPropagation()} className='product-modal'>
         <button
           className='btn-close-modal'
           onClick={() => onClose()}

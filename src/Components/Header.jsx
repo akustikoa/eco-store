@@ -36,10 +36,12 @@ const Header = ({
     };
   }, [menuOpen]);
 
-  const totalItems = cart.reduce(
+  const totalCartItems = cart.reduce(
     (acc, producte) => acc + (producte.quantity || 1),
-    0
+    0,
   );
+
+
 
   const categories = [
     { value: 'all', label: 'All Categories' },
@@ -108,7 +110,9 @@ const Header = ({
 
         <Link to='/cart' className='mobile-cart-count'>
           <i className='cart-responsive fa-solid fa-cart-shopping'></i>
-          {totalItems > 0 && <span className='cart-count'> {totalItems}</span>}
+          {totalCartItems > 0 && (
+            <span className='cart-count'> {totalCartItems}</span>
+          )}
         </Link>
 
         {/* hamburger menu */}
@@ -157,7 +161,7 @@ const Header = ({
           >
             <Link to='/cart' className='cart-count-header-desktop'>
               <i className='fa-solid fa-cart-shopping'></i>
-              <span className='cart-count'> {totalItems}</span>
+              <span className='cart-count'> {totalCartItems}</span>
             </Link>
           </div>
         </nav>
