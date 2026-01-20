@@ -807,6 +807,11 @@ footer span {
   .product-modal h2 {
     font-size: 1.3rem;
   }
+  .eco-info {
+    margin-bottom: 22px;
+    gap: 5px;
+    font-size: 12px;
+  }
 }
 
 /* #endregion --- Moal Container --- */
