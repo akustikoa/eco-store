@@ -207,12 +207,19 @@ body {
   min-width: 0; /* evita desbordament */
 }
 
+.cart-item-left img {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border-radius: 8px;
+}
+
 .cart-item-right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
-  gap: 10px;
+  gap: 50px;
   min-width: 150px;
   flex-shrink: 0;
 }
@@ -221,6 +228,11 @@ body {
   font-size: 13px;
 }
 
+.cart-item p.cart-item-price {
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 4px;
+}
 .cart-quantity {
   display: flex;
   align-items: center;
@@ -313,11 +325,12 @@ body {
 .message-empty {
   font-size: 22px;
   text-align: center;
-  color: #6b6b6b;
+  color: #555;
   margin: 50px 20px 20px 20px;
   padding: 20px;
   background-color: #eaeaea;
   border-radius: 8px;
+  width: 80%;
 }
 
 /* #endregion --- Cart styles --- */
@@ -598,6 +611,11 @@ footer span {
   padding: 8px;
   z-index: 1001;
 }
+@media screen and (max-width: 840px) {
+  .cart-summary-fixed {
+    display: none;
+  }
+}
 
 @media screen and (max-width: 840px) {
   .header-btn,
@@ -686,7 +704,7 @@ footer span {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .Title {
     font-size: 24px;
   }
@@ -711,6 +729,7 @@ footer span {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap: 0px;
     width: 100%;
   }
 
@@ -819,7 +838,6 @@ footer span {
 
 /* Preu destacat */
 .product-modal p:nth-of-type(2) {
-  /* El tercer p (price) si mantens l'ordre */
   font-size: 1.3rem;
   font-weight: bold;
   color: #555;

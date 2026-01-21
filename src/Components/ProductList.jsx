@@ -14,13 +14,19 @@ const ProductList = ({ products }) => {
   return (
     <>
       <div className='product-list'>
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            {...product}
-            onProductClick={handleProductClick}
-          />
-        ))}
+        {products.length === 0 ? (
+          <p className='message-empty'>No products found</p>
+        ) : (
+          <>
+            {products.map((product) => (
+              <ProductCard
+                key={product.id}
+                {...product}
+                onProductClick={handleProductClick}
+              />
+            ))}
+          </>
+        )}
       </div>
       {selectedProduct !== null && (
         <ProductModal product={selectedProduct} onClose={onClose} />

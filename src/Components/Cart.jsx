@@ -39,7 +39,9 @@ const Cart = () => {
                     <p className='productCard-waterSaved'>
                       Water Saved: {product.waterSaved}
                     </p>
-                    <p>Price: {product.price.toFixed(2)}€</p>
+                    <p className='cart-item-price'>
+                      Price: {product.price.toFixed(2)}€
+                    </p>
                   </div>
                 </div>
                 <div className='cart-item-right'>
@@ -54,7 +56,12 @@ const Cart = () => {
                     <button
                       className='productCard-removeFromCart'
                       onClick={() => {
-                        removeAllFromCart(product.id);
+                        if (
+                          window.confirm(
+                            'Are you sure you want to delete this item?',
+                          )
+                        )
+                          removeAllFromCart(product.id);
                       }}
                     >
                       <i className='fa-regular fa-trash-can'></i>
@@ -65,6 +72,28 @@ const Cart = () => {
             ))}
           </div>
           <div className='cart-summary'>
+            <h4>
+              Total Price: <span> {total.toFixed(2)}€</span>
+            </h4>
+            <h4>
+              Total CO2 Saved:{' '}
+              <span>
+                {' '}
+                {totalCO2.toFixed(2)}Kg{' '}
+                <i className='fa-solid fa-leaf green-leaf'></i>
+              </span>
+            </h4>
+            <h4>
+              Total Water Saved:{' '}
+              <span>
+                {' '}
+                {totalWater.toFixed(2)}L{' '}
+                <i className='fa-solid fa-droplet blue-droplet'></i>
+              </span>
+            </h4>
+            <button className='checkout-btn'>Checkout</button>
+          </div>
+          <div className='cart-summary-fixed'>
             <h4>
               Total Price: <span> {total.toFixed(2)}€</span>
             </h4>
