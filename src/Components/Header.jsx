@@ -41,8 +41,6 @@ const Header = ({
     0,
   );
 
-
-
   const categories = [
     { value: 'all', label: 'All Categories' },
     { value: "women's clothing", label: "Women's clothing" },
@@ -115,6 +113,13 @@ const Header = ({
           )}
         </Link>
 
+        <Link to='/' className='mobile-heart'>
+          <i className='cart-responsive fa-solid fa-heart'></i>
+          {totalCartItems > 0 && (
+            <span className='cart-count'> {totalCartItems}</span>
+          )}
+        </Link>
+
         {/* hamburger menu */}
         <button
           className='menu-toggle'
@@ -152,6 +157,10 @@ const Header = ({
 
           <Link to='/cart' className='header-btn' onClick={closeMenu}>
             Cart
+          </Link>
+
+          <Link to='/favorites' className='header-btn' onClick={closeMenu}>
+            Favorites
           </Link>
 
           <div

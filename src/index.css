@@ -41,7 +41,30 @@ header {
   margin-right: 50px;
 }
 
+.mobile-heart {
+  display: none;
+  position: relative;
+  margin-right: 96px;
+}
+
 .mobile-cart-count .cart-count {
+  text-decoration: none;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #2e7d32;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-heart .cart-count {
   text-decoration: none;
   position: absolute;
   top: -10px;
@@ -74,6 +97,13 @@ header {
 .mobile-home:visited,
 .mobile-home:hover,
 .mobile-home:active {
+  color: inherit;
+}
+
+.mobile-heart:link,
+.mobile-heart:visited,
+.mobile-heart:hover,
+.mobile-heart:active {
   color: inherit;
 }
 
@@ -167,6 +197,7 @@ body {
 
 /* #region --- Cart styles --- */
 .cart {
+  position: relative;
   padding: 20px;
   max-width: 600px;
   margin: 80px auto;
@@ -280,6 +311,33 @@ body {
     color: #555;
   }
 }
+
+.cart-summary-fixed {
+  display: block;
+  position: fixed;
+  top: 90px; /* Ajusta segons el teu header */
+  right: 20px;
+  width: 138px;
+  opacity: 0.95;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #eee;
+  z-index: 1000;
+}
+
+.cart-summary-fixed p {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+div .cart-summary-fixed-title {
+  margin-bottom: 10px;
+}
+
 .cart-summary {
   display: flex;
   justify-content: space-between;
@@ -304,7 +362,8 @@ body {
   margin-left: 3px;
 }
 
-.cart-summary button {
+.cart-summary button,
+.cart-summary-fixed button {
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
@@ -317,7 +376,12 @@ body {
   transition: background-color 0.2s ease-in-out;
 }
 
-.cart-summary button:hover {
+.cart-summary-fixed button {
+  margin-top: 12px;
+}
+
+.cart-summary button:hover,
+.cart-summary-fixed button:hover {
   background-color: #34a853;
   color: #fff;
 }
@@ -465,6 +529,21 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+.productCard-heart {
+  position: relative;
+  border: none;
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+  background-color: rgb(234, 234, 234);
+  color: #555;
+  user-select: none; /* Evita selecció de text */
+  -webkit-tap-highlight-color: transparent;
+}
+
 .productCard-addToCart .cart-count {
   position: absolute;
   top: -8px;
@@ -479,19 +558,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
 }
 
 /* Hover (desktop) */
 .productCard-addToCart:hover,
-.productCard-removeFromCart:hover {
+.productCard-removeFromCart:hover .productCard-heart {
   background-color: #34a853;
   color: #fff;
 }
 
 /* Active (quan estàs pressionant) */
 .productCard-addToCart:active,
-.productCard-removeFromCart:active {
+.productCard-removeFromCart:active,
+.productCard-heart:active {
   background-color: #2e7d32;
   color: #fff;
   transform: scale(0.97);
@@ -499,7 +578,8 @@ body {
 
 /* Quan el botó està "focus" (per teclat) */
 .productCard-addToCart:focus-visible,
-.productCard-removeFromCart:focus-visible {
+.productCard-removeFromCart:focus-visible,
+.productCard-heart:focus-visible {
   outline: 2px solid #34a853;
   outline-offset: 2px;
 }
@@ -507,13 +587,15 @@ body {
 /* Per dispositius tàctils: elimina hover */
 @media (hover: none) {
   .productCard-addToCart:hover,
-  .productCard-removeFromCart:hover {
+  .productCard-removeFromCart:hover,
+  .productCard-heart:hover {
     background-color: rgb(234, 234, 234);
     color: #555;
   }
 
   .productCard-addToCart:active,
-  .productCard-removeFromCart:active {
+  .productCard-removeFromCart:active,
+  .productCard-heart:active {
     background-color: #2e7d32;
     color: #fff;
     transform: scale(0.97);
@@ -647,7 +729,8 @@ footer span {
   }
 
   .mobile-cart-count,
-  .mobile-home {
+  .mobile-home,
+  .mobile-heart {
     display: block;
     position: absolute;
     right: 75px;

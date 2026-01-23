@@ -75,6 +75,14 @@ const ProductCard = ({
             >
               <i className='fa-regular fa-trash-can'></i>
             </button>
+            <button
+              className='productCard-heart'
+              onClick={() => {
+                addToFavorites(product);
+              }}
+            >
+              <i className='fa-solid fa-heart'></i>
+            </button>
           </div>
         </div>
       </div>

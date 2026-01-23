@@ -6,6 +6,7 @@ import Cart from './Components/Cart';
 import { enhanceProductWithEcoData } from './utils/productUtils';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
+import Favorites from './Components/Favorites';
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -63,6 +64,7 @@ const App = () => {
             element={<ProductList products={filteredProducts} />}
           />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/Favorites' element={<Favorites />} />
         </Routes>
         <Footer />
       </BrowserRouter>

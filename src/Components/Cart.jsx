@@ -94,25 +94,28 @@ const Cart = () => {
             <button className='checkout-btn'>Checkout</button>
           </div>
           <div className='cart-summary-fixed'>
-            <h4>
-              Total Price: <span> {total.toFixed(2)}€</span>
-            </h4>
-            <h4>
-              Total CO2 Saved:{' '}
+            <h2 className='cart-summary-fixed-title'>Saved</h2>
+            <p>
+              <i className='fa-solid fa-leaf green-leaf'></i>
               <span>
                 {' '}
-                {totalCO2.toFixed(2)}Kg{' '}
-                <i className='fa-solid fa-leaf green-leaf'></i>
+                {totalCO2.toFixed(2)} <span> K</span>
               </span>
-            </h4>
-            <h4>
-              Total Water Saved:{' '}
+            </p>
+            <p>
+              <i className='fa-solid fa-droplet blue-droplet'></i>
               <span>
-                {' '}
-                {totalWater.toFixed(2)}L{' '}
-                <i className='fa-solid fa-droplet blue-droplet'></i>
+                {totalWater.toFixed(2)}
+                <span> L</span>
               </span>
-            </h4>
+            </p>
+            <p>
+              <i className='fa-solid fa-dollar-sign yellow-star'></i>
+              <span>
+                {total.toFixed(2)}
+                <span> €</span>
+              </span>
+            </p>
             <button className='checkout-btn'>Checkout</button>
           </div>
         </>
