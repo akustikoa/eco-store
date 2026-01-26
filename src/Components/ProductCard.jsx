@@ -9,6 +9,10 @@ const ProductCard = ({
   co2Saved,
   waterSaved,
   onProductClick,
+  favorites,
+  addToFavorites,
+  removeFromFavorites,
+  isFavorite,
 }) => {
   const { cart, addToCart, removeFromCart } = useCart(); //import from context
 
@@ -78,10 +82,18 @@ const ProductCard = ({
             <button
               className='productCard-heart'
               onClick={() => {
-                addToFavorites(product);
+                if (isFavorite) {
+                  removeFromFavorites(id);
+                } else {
+                  addToFavorites(product);
+                }
               }}
             >
-              <i className='fa-solid fa-heart'></i>
+              {isFavorite ? (
+                <i className='fa-solid fa-heart'></i>
+              ) : (
+                <i className='fa-solid fa-heart green-heart'></i>
+              )}
             </button>
           </div>
         </div>

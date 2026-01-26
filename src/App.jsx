@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import useLocalStorage from './hooks/useLocalStorage';
 import { CartProvider } from './context/CartContext';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProductList from './Components/ProductList';
@@ -10,6 +11,7 @@ import Favorites from './Components/Favorites';
 
 const App = () => {
   const [products, setProducts] = useState([]);
+  const [favorites, setFavorites] = useLocalStorage('favorites', []); //import from hooks([]);
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [ecoScoreFilter, setEcoScoreFilter] = useState('all');
 
@@ -17,11 +19,14 @@ const App = () => {
     async function fetchedProducts() {
       try {
         const res = await fetch('https://fakestoreapi.com/products');
+        if (!res.ok) {
+          throw new Error(`Http Error ${res.status}`);
+        }
         const data = await res.json();
         const enhancedData = data.map(enhanceProductWithEcoData);
         setProducts(enhancedData);
       } catch (error) {
-        console.error('Error fetching products', error);
+        console.error('Error fetching products', error.message);
       }
     }
 
@@ -49,6 +54,19 @@ const App = () => {
     return true;
   });
 
+  const addToFavorites = (product) => {
+    const existingProduct = favorites.find((item) => item.id === product.id);
+    if (existingProduct) {
+      return;
+    } else {
+      setFavorites([...favorites, product]);
+    }
+  };
+
+  const removeFromFavorites = (id) => {
+    setFavorites(favorites.filter((item) => item.id !== id));
+  };
+
   return (
     <CartProvider>
       <BrowserRouter>
@@ -61,10 +79,25 @@ const App = () => {
         <Routes>
           <Route
             path='/'
-            element={<ProductList products={filteredProducts} />}
+            element={
+              <ProductList
+                products={filteredProducts}
+                favorites={favorites}
+                addToFavorites={addToFavorites}
+                removeFromFavorites={removeFromFavorites}
+              />
+            }
           />
           <Route path='/cart' element={<Cart />} />
-          <Route path='/Favorites' element={<Favorites />} />
+          <Route
+            path='/favorites'
+            element={
+              <Favorites
+                favorites={favorites}
+                removeFromFavorites={removeFromFavorites}
+              />
+            }
+          />
         </Routes>
         <Footer />
       </BrowserRouter>

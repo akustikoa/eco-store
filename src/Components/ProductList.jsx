@@ -1,7 +1,12 @@
 import ProductCard from './ProductCard';
 import ProductModal from './ProductModal';
 import { useState } from 'react';
-const ProductList = ({ products }) => {
+const ProductList = ({
+  products,
+  favorites,
+  addToFavorites,
+  removeFromFavorites,
+}) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const handleProductClick = (product) => {
     setSelectedProduct(product);
@@ -23,6 +28,10 @@ const ProductList = ({ products }) => {
                 key={product.id}
                 {...product}
                 onProductClick={handleProductClick}
+                favorites={favorites}
+                addToFavorites={addToFavorites}
+                removeFromFavorites={removeFromFavorites}
+                isFavorite={favorites.some((fav) => fav.id === product.id)}
               />
             ))}
           </>

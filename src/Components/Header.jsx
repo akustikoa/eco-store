@@ -113,7 +113,7 @@ const Header = ({
           )}
         </Link>
 
-        <Link to='/' className='mobile-heart'>
+        <Link to='/favorites' className='mobile-heart'>
           <i className='cart-responsive fa-solid fa-heart'></i>
           {totalCartItems > 0 && (
             <span className='cart-count'> {totalCartItems}</span>
