@@ -90,9 +90,9 @@ const ProductCard = ({
               }}
             >
               {isFavorite ? (
-                <i className='fa-solid fa-heart'></i>
-              ) : (
                 <i className='fa-solid fa-heart green-heart'></i>
+              ) : (
+                <i className='fa-solid fa-heart '></i>
               )}
             </button>
           </div>

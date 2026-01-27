@@ -221,8 +221,10 @@ body {
 
 .cart-item {
   display: flex;
-  align-items: center;
+  align-items: stretch;
+
   justify-content: space-between;
+  min-height: 150px;
   gap: 20px;
   padding: 15px;
   background-color: #f9f9f9;
@@ -240,7 +242,8 @@ body {
 
 .cart-item-left img {
   width: 100px;
-  height: 100px;
+  object-fit: cover;
+  max-height: 90px;
   margin: 10px;
   border-radius: 8px;
 }
@@ -250,7 +253,7 @@ body {
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
-  gap: 50px;
+  gap: 60px;
   min-width: 150px;
   flex-shrink: 0;
 }
@@ -394,10 +397,24 @@ div .cart-summary-fixed-title {
   padding: 20px;
   background-color: #eaeaea;
   border-radius: 8px;
-  
 }
 
 /* #endregion --- Cart styles --- */
+
+/* #region --- favorite styles ---  */
+
+.cart-item-right-favorites {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: end;
+  min-width: 150px;
+  padding: 5px;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* #endregion --- favorite styles ---  */
 
 /* #region --- Card styles --- */
 .product-list {
@@ -514,7 +531,8 @@ div .cart-summary-fixed-title {
   -webkit-tap-highlight-color: transparent; /* Elimina el color blau en mòbil */
 }
 
-.productCard-removeFromCart {
+.productCard-removeFromCart,
+.trash-cart {
   position: relative;
   border: none;
   font-size: 16px;
@@ -562,7 +580,8 @@ div .cart-summary-fixed-title {
 
 /* Hover (desktop) */
 .productCard-addToCart:hover,
-.productCard-removeFromCart:hover .productCard-heart {
+.productCard-removeFromCart:hover .productCard-heart:hover,
+.trash-cart:hover {
   background-color: #34a853;
   color: #fff;
 }
@@ -570,7 +589,8 @@ div .cart-summary-fixed-title {
 /* Active (quan estàs pressionant) */
 .productCard-addToCart:active,
 .productCard-removeFromCart:active,
-.productCard-heart:active {
+.productCard-heart:active,
+.trash-cart:active {
   background-color: #2e7d32;
   color: #fff;
   transform: scale(0.97);
@@ -579,7 +599,10 @@ div .cart-summary-fixed-title {
 /* Quan el botó està "focus" (per teclat) */
 .productCard-addToCart:focus-visible,
 .productCard-removeFromCart:focus-visible,
-.productCard-heart:focus-visible {
+.productCard-heart:focus-visible,
+.trash-cart:focus-visible {
+  background-color: #34a853;
+  color: #fff;
   outline: 2px solid #34a853;
   outline-offset: 2px;
 }
@@ -617,6 +640,10 @@ div .cart-summary-fixed-title {
 
 .yellow-star {
   color: #ffcc00;
+}
+
+.green-heart {
+  color: #31a04f;
 }
 
 .productCard-waterSaved i.blue-droplet {
@@ -803,6 +830,7 @@ footer span {
   .cart-item {
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
   }
 
   /* --------------------------------- */

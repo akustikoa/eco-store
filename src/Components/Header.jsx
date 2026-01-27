@@ -115,9 +115,6 @@ const Header = ({
 
         <Link to='/favorites' className='mobile-heart'>
           <i className='cart-responsive fa-solid fa-heart'></i>
-          {totalCartItems > 0 && (
-            <span className='cart-count'> {totalCartItems}</span>
-          )}
         </Link>
 
         {/* hamburger menu */}
