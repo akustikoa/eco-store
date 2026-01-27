@@ -6,6 +6,7 @@ const ProductList = ({
   favorites,
   addToFavorites,
   removeFromFavorites,
+  isLoading,
 }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const handleProductClick = (product) => {
@@ -19,7 +20,9 @@ const ProductList = ({
   return (
     <>
       <div className='product-list'>
-        {products.length === 0 ? (
+        {isLoading ? (
+          <p className='message-empty'>Loading products...</p>
+        ) : products.length === 0 ? (
           <p className='message-empty'>No products found</p>
         ) : (
           <>

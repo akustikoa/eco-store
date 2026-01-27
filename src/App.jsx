@@ -10,6 +10,7 @@ import Footer from './Components/Footer';
 import Favorites from './Components/Favorites';
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [favorites, setFavorites] = useLocalStorage('favorites', []); //import from hooks([]);
   const [categoryFilter, setCategoryFilter] = useState('all');
@@ -27,6 +28,8 @@ const App = () => {
         setProducts(enhancedData);
       } catch (error) {
         console.error('Error fetching products', error.message);
+      } finally {
+        setIsLoading(false);
       }
     }
 
@@ -85,6 +88,7 @@ const App = () => {
                 favorites={favorites}
                 addToFavorites={addToFavorites}
                 removeFromFavorites={removeFromFavorites}
+                isLoading={isLoading}
               />
             }
           />

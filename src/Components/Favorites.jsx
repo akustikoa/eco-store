@@ -23,24 +23,23 @@ const Favorites = ({ favorites, removeFromFavorites }) => {
                     <p className='cart-item-price'>
                       Price: {product.price.toFixed(2)}€
                     </p>
+                    <div className='cart-item-favorites-buttons'>
+                      <button
+                        className='productCard-addToCart'
+                        onClick={() => {
+                          addToCart(product);
+                        }}
+                      >
+                        <i className='fa-solid fa-cart-plus'></i>
+                      </button>
+                      <button
+                        className='trash-cart'
+                        onClick={() => removeFromFavorites(product.id)}
+                      >
+                        <i className='fa-regular fa-trash-can'></i>
+                      </button>
+                    </div>
                   </div>
-                </div>
-                <div className='cart-item-right-favorites'>
-                  <button
-                    className='productCard-addToCart'
-                    onClick={() => {
-                      addToCart(product);
-                    }}
-                  >
-                    <i className='fa-solid fa-cart-plus'></i>
-                  </button>
-
-                  <button
-                    className='trash-cart'
-                    onClick={() => removeFromFavorites(product.id)}
-                  >
-                    <i className='fa-regular fa-trash-can'></i>
-                  </button>
                 </div>
               </div>
             ))}
