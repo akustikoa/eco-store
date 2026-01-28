@@ -10,7 +10,6 @@ const ProductCard = ({
   co2Saved,
   waterSaved,
   onProductClick,
-  favorites,
   showToast,
   addToFavorites,
   removeFromFavorites,

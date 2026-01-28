@@ -1,6 +1,6 @@
 import { useCart } from './UseCart';
 
-const Cart = ({showToast}) => {
+const Cart = ({ showToast }) => {
   const { cart, removeFromCart, addToCart, removeAllFromCart } = useCart();
   const total = cart.reduce(
     (sum, producte) => sum + producte.price * producte.quantity || 1,

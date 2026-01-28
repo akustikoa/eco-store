@@ -77,7 +77,7 @@ const App = () => {
   };
 
   return (
-    <CartProvider>
+    <CartProvider showToast={showToast}>
       <BrowserRouter>
         <Header
           categoryfilter={categoryFilter}
@@ -113,7 +113,6 @@ const App = () => {
         </Routes>
         <Footer />
         {toastMessage && <div className='toast'>{toastMessage} </div>}
-        <CartProvider showToast={showToast}></CartProvider>
       </BrowserRouter>
     </CartProvider>
   );

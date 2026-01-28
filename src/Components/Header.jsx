@@ -1,6 +1,7 @@
 import { useCart } from './UseCart';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Header = ({
   categoryFilter,
@@ -10,6 +11,7 @@ const Header = ({
 }) => {
   const { cart } = useCart();
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   // Tancar menú
   const closeMenu = () => {
@@ -57,15 +59,17 @@ const Header = ({
     { value: 'D', label: ' EcoScore D (D, D+)' },
   ];
 
-  // Funció per manejar els canvis als selects (que també tanqui el menú)
+  // Selects
   const handleCategoryChange = (e) => {
     setCategoryFilter(e.target.value);
-    closeMenu(); // Tanca el menú quan canvies categoria
+    closeMenu();
+    navigate('/');
   };
 
   const handleEcoScoreChange = (e) => {
     setEcoScoreFilter(e.target.value);
-    closeMenu(); // Tanca el menú quan canvies EcoScore
+    closeMenu();
+    navigate('/');
   };
 
   useEffect(() => {

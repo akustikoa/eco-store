@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { createContext, useState } from 'react';
 
 const CartContext = createContext();
-export const CartProvider = ({ children }) => {
+export const CartProvider = ({ children, showToast }) => {
   const [cart, setCart] = useState(() => {
     try {
       const savedCart = localStorage.getItem('ecoStoreCart');
@@ -43,6 +43,7 @@ export const CartProvider = ({ children }) => {
       if (confirmDelete) {
         const updatedCart = cart.filter((item) => item.id !== id);
         setCart(updatedCart);
+        showToast('Removed from cart');
       }
     } else {
       const updatedCart = cart.map((item) => {

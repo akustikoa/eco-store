@@ -30,7 +30,7 @@ const Favorites = ({ favorites, removeFromFavorites, showToast }) => {
                         className='productCard-addToCart'
                         onClick={() => {
                           addToCart(product);
-                          showToast('Product added to cart');
+                          showToast('Added to cart');
                           navigate('/cart');
                         }}
                       >
@@ -40,7 +40,7 @@ const Favorites = ({ favorites, removeFromFavorites, showToast }) => {
                         className='trash-cart'
                         onClick={() => {
                           removeFromFavorites(product.id);
-                          showToast('Product removed from favorites');
+                          showToast('Removed from favorites');
                         }}
                       >
                         <i className='fa-regular fa-trash-can'></i>

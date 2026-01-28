@@ -439,6 +439,7 @@ div .cart-summary-fixed-title {
   display: block;
   padding: 14px 14px 4px 14px;
   margin: 16px;
+ border: 1px solid #34a85317;
   border-radius: 6px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: start;
@@ -487,6 +488,7 @@ div .cart-summary-fixed-title {
 .productCard-co2Saved,
 .productCard-waterSaved {
   background-color: rgb(234, 234, 234);
+  border: 1px solid #34a85317;
   padding: 2px 6px;
   border-radius: 4px;
   margin: 2px 6px 6px 0;
@@ -526,6 +528,7 @@ div .cart-summary-fixed-title {
   text-decoration: none;
   transition: all 0.15s ease-in-out;
   background-color: rgb(234, 234, 234);
+  border: 1px solid #34a85317;
   color: #555;
   user-select: none; /* Evita selecció de text */
   -webkit-tap-highlight-color: transparent; /* Elimina el color blau en mòbil */
@@ -561,6 +564,7 @@ div .cart-summary-fixed-title {
   text-decoration: none;
   transition: all 0.15s ease-in-out;
   background-color: rgb(234, 234, 234);
+  border: 1px solid #34a85317;
   color: #555;
   user-select: none; /* Evita selecció de text */
   -webkit-tap-highlight-color: transparent;
@@ -1021,6 +1025,7 @@ footer span {
 
 /* #endregion --- Moal Container --- */
 
+/* #region --- Toast Message --- */
 .toast {
   position: fixed;
   bottom: 20px;
@@ -1051,3 +1056,5 @@ footer span {
     transform: translateY(10px);
   }
 }
+
+/* #endregion --- Toast Messge --- */
