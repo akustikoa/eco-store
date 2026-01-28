@@ -1,6 +1,6 @@
 import { useCart } from './UseCart';
 
-const Favorites = ({ favorites, removeFromFavorites }) => {
+const Favorites = ({ favorites, removeFromFavorites, showToast }) => {
   const { addToCart } = useCart();
 
   return (
@@ -28,13 +28,17 @@ const Favorites = ({ favorites, removeFromFavorites }) => {
                         className='productCard-addToCart'
                         onClick={() => {
                           addToCart(product);
+                          showToast('Product added to cart');
                         }}
                       >
                         <i className='fa-solid fa-cart-plus'></i>
                       </button>
                       <button
                         className='trash-cart'
-                        onClick={() => removeFromFavorites(product.id)}
+                        onClick={() => {
+                          removeFromFavorites(product.id);
+                          showToast('Product removed from favorites');
+                        }}
                       >
                         <i className='fa-regular fa-trash-can'></i>
                       </button>

@@ -7,6 +7,7 @@ const ProductList = ({
   addToFavorites,
   removeFromFavorites,
   isLoading,
+  showToast,
 }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const handleProductClick = (product) => {
@@ -34,6 +35,7 @@ const ProductList = ({
                 favorites={favorites}
                 addToFavorites={addToFavorites}
                 removeFromFavorites={removeFromFavorites}
+                showToast={showToast}
                 isFavorite={favorites.some((fav) => fav.id === product.id)}
               />
             ))}

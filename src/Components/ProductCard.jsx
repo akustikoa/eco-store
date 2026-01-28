@@ -10,6 +10,7 @@ const ProductCard = ({
   waterSaved,
   onProductClick,
   favorites,
+  showToast,
   addToFavorites,
   removeFromFavorites,
   isFavorite,
@@ -64,6 +65,7 @@ const ProductCard = ({
               className='productCard-addToCart'
               onClick={() => {
                 addToCart(product);
+                showToast('Added to cart');
               }}
             >
               <i className='fa-solid fa-cart-plus'></i>
@@ -75,6 +77,7 @@ const ProductCard = ({
               className='productCard-removeFromCart'
               onClick={() => {
                 removeFromCart(product.id);
+                showToast('Removed from cart');
               }}
             >
               <i className='fa-regular fa-trash-can'></i>
@@ -84,15 +87,17 @@ const ProductCard = ({
               onClick={() => {
                 if (isFavorite) {
                   removeFromFavorites(id);
+                  showToast('Removed from favorites');
                 } else {
                   addToFavorites(product);
+                  showToast('Added to favorites');
                 }
               }}
             >
               {isFavorite ? (
                 <i className='fa-solid fa-heart green-heart'></i>
               ) : (
-                <i className='fa-solid fa-heart '></i>
+                <i className='fa-regular fa-heart '></i>
               )}
             </button>
           </div>

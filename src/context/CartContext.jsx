@@ -12,7 +12,7 @@ export const CartProvider = ({ children }) => {
       return [];
     }
   });
-  
+
   const addToCart = (product) => {
     const existingProduct = cart.find((item) => item.id === product.id);
     if (existingProduct) {
@@ -36,6 +36,8 @@ export const CartProvider = ({ children }) => {
     const existingProduct = cart.find((item) => item.id === id);
     if (!existingProduct) return;
     if (existingProduct.quantity === 1) {
+      window.confirm('Are you sure you want to delete this item?');
+
       const updatedCart = cart.filter((item) => item.id !== id);
       setCart(updatedCart);
     } else {

@@ -1,5 +1,6 @@
 import { useCart } from './UseCart';
-const Cart = () => {
+
+const Cart = ({showToast}) => {
   const { cart, removeFromCart, addToCart, removeAllFromCart } = useCart();
   const total = cart.reduce(
     (sum, producte) => sum + producte.price * producte.quantity || 1,
@@ -62,6 +63,7 @@ const Cart = () => {
                           )
                         )
                           removeAllFromCart(product.id);
+                        showToast('Removed from cart');
                       }}
                     >
                       <i className='fa-regular fa-trash-can'></i>

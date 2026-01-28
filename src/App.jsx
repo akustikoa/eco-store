@@ -15,6 +15,7 @@ const App = () => {
   const [favorites, setFavorites] = useLocalStorage('favorites', []); //import from hooks([]);
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [ecoScoreFilter, setEcoScoreFilter] = useState('all');
+  const [toastMessage, setToastMessage] = useState('');
 
   useEffect(() => {
     async function fetchedProducts() {
@@ -70,6 +71,11 @@ const App = () => {
     setFavorites(favorites.filter((item) => item.id !== id));
   };
 
+  const showToast = (message) => {
+    setToastMessage(message);
+    setTimeout(() => setToastMessage(''), 2000);
+  };
+
   return (
     <CartProvider>
       <BrowserRouter>
@@ -89,21 +95,25 @@ const App = () => {
                 addToFavorites={addToFavorites}
                 removeFromFavorites={removeFromFavorites}
                 isLoading={isLoading}
+                showToast={showToast}
               />
             }
           />
-          <Route path='/cart' element={<Cart />} />
+          <Route path='/cart' element={<Cart showToast={showToast} />} />
           <Route
             path='/favorites'
             element={
               <Favorites
                 favorites={favorites}
                 removeFromFavorites={removeFromFavorites}
+                showToast={showToast}
               />
             }
           />
         </Routes>
         <Footer />
+        {toastMessage && <div className='toast'>{toastMessage} </div>}
+        <CartProvider showToast={showToast}></CartProvider>
       </BrowserRouter>
     </CartProvider>
   );
