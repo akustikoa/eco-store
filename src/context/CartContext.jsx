@@ -28,7 +28,7 @@ export const CartProvider = ({ children }) => {
       });
       setCart(updatedCart);
     } else {
-      setCart([...cart, { ...product, quantity: 1 }]);
+      setCart([{ ...product, quantity: 1 }, ...cart]);
     }
   };
 
@@ -36,10 +36,14 @@ export const CartProvider = ({ children }) => {
     const existingProduct = cart.find((item) => item.id === id);
     if (!existingProduct) return;
     if (existingProduct.quantity === 1) {
-      window.confirm('Are you sure you want to delete this item?');
+      const confirmDelete = window.confirm(
+        'Are you sure you want to remove this product?',
+      );
 
-      const updatedCart = cart.filter((item) => item.id !== id);
-      setCart(updatedCart);
+      if (confirmDelete) {
+        const updatedCart = cart.filter((item) => item.id !== id);
+        setCart(updatedCart);
+      }
     } else {
       const updatedCart = cart.map((item) => {
         if (item.id == id) {

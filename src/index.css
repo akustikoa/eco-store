@@ -531,6 +531,10 @@ div .cart-summary-fixed-title {
   -webkit-tap-highlight-color: transparent; /* Elimina el color blau en mòbil */
 }
 
+.btn-trash-card {
+  display: none;
+}
+
 .productCard-removeFromCart,
 .trash-cart {
   position: relative;

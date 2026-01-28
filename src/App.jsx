@@ -63,7 +63,7 @@ const App = () => {
     if (existingProduct) {
       return;
     } else {
-      setFavorites([...favorites, product]);
+      setFavorites([product, ...favorites]);
     }
   };
 

@@ -1,7 +1,9 @@
 import { useCart } from './UseCart';
+import { useNavigate } from 'react-router-dom';
 
 const Favorites = ({ favorites, removeFromFavorites, showToast }) => {
   const { addToCart } = useCart();
+  const navigate = useNavigate();
 
   return (
     <div className='cart'>
@@ -29,6 +31,7 @@ const Favorites = ({ favorites, removeFromFavorites, showToast }) => {
                         onClick={() => {
                           addToCart(product);
                           showToast('Product added to cart');
+                          navigate('/cart');
                         }}
                       >
                         <i className='fa-solid fa-cart-plus'></i>

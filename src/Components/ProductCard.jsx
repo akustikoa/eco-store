@@ -1,4 +1,5 @@
 import { useCart } from './UseCart';
+import { useNavigate } from 'react-router-dom';
 const ProductCard = ({
   id,
   description,
@@ -16,6 +17,7 @@ const ProductCard = ({
   isFavorite,
 }) => {
   const { cart, addToCart, removeFromCart } = useCart(); //import from context
+  const navigate = useNavigate();
 
   //create product object
   const product = {
@@ -66,6 +68,7 @@ const ProductCard = ({
               onClick={() => {
                 addToCart(product);
                 showToast('Added to cart');
+                navigate('/cart');
               }}
             >
               <i className='fa-solid fa-cart-plus'></i>
@@ -74,7 +77,7 @@ const ProductCard = ({
               )}
             </button>
             <button
-              className='productCard-removeFromCart'
+              className='productCard-removeFromCart btn-trash-card'
               onClick={() => {
                 removeFromCart(product.id);
                 showToast('Removed from cart');
