@@ -67,7 +67,7 @@ const ProductCard = ({
               onClick={() => {
                 addToCart(product);
                 showToast('Added to cart');
-                navigate('/cart');
+                // navigate('/cart');
               }}
             >
               <i className='fa-solid fa-cart-plus'></i>

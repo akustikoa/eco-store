@@ -6,6 +6,75 @@
   box-sizing: border-box;
 }
 
+/* #region --- Cart icon header animation---  */
+/* responsive */
+.cart-animation i {
+  animation: cartBounce 0.3s ease;
+  animation: cartBounceGreen 0.3s ease;
+}
+
+/* desktop */
+.cart-count-header-desktop.cart-animation-desk i {
+  position: relative;
+  animation: cartBounce 0.3s ease;
+  animation: cartBounceGreen 0.3s ease;
+}
+
+.cart-count-header-desktop.cart-animation-desk i::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+  background: radial-gradient(
+    circle,
+    rgba(46, 125, 50, 0.5) 70%,
+    rgba(46, 125, 50, 0) 70%
+  );
+  border-radius: 50%;
+  opacity: 0;
+  animation: greenPulse 0.3s ease;
+  z-index: -1;
+  filter: blur(4px);
+}
+
+@keyframes cartBounceGreen {
+  0%,
+  100% {
+    transform: scale(1);
+    color: #555; /* Color original */
+  }
+  50% {
+    transform: scale(1.3);
+    color: #2e7d32; /* Color verd */
+  }
+}
+
+@keyframes cartBounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+@keyframes greenPulse {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}
+/* #endregion --- Cart icon header animation --- */
+
 /* #region --- Header styles --- */
 
 header {
@@ -439,7 +508,7 @@ div .cart-summary-fixed-title {
   display: block;
   padding: 14px 14px 4px 14px;
   margin: 16px;
- border: 1px solid #34a85317;
+  border: 1px solid #34a85317;
   border-radius: 6px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: start;
@@ -666,6 +735,7 @@ div .cart-summary-fixed-title {
 /* #endregion Icon styles */
 
 /* #region --- Footer --- */
+
 footer {
   display: flex;
   font-size: 18px;

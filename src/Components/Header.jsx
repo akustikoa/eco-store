@@ -2,6 +2,7 @@ import { useCart } from './UseCart';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 
 const Header = ({
   categoryFilter,
@@ -12,6 +13,11 @@ const Header = ({
   const { cart } = useCart();
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+
+  // Ref Cart
+  const cartIconMobileRef = useRef(null);
+  const cartIconDesktopRef = useRef(null);
+  const prevCartItemsRef = useRef(0);
 
   // Tancar menú
   const closeMenu = () => {
@@ -42,6 +48,22 @@ const Header = ({
     (acc, producte) => acc + (producte.quantity || 1),
     0,
   );
+
+  useEffect(() => {
+    if (
+      prevCartItemsRef.current !== 0 &&
+      totalCartItems > prevCartItemsRef.current
+    ) {
+      cartIconMobileRef.current?.classList.add('cart-animation');
+      cartIconDesktopRef.current?.classList.add('cart-animation-desk');
+
+      setTimeout(() => {
+        cartIconMobileRef.current?.classList.remove('cart-animation');
+        cartIconDesktopRef.current?.classList.remove('cart-animation-desk');
+      }, 300);
+    }
+    prevCartItemsRef.current = totalCartItems;
+  }, [totalCartItems]);
 
   const categories = [
     { value: 'all', label: 'All Categories' },
@@ -110,7 +132,7 @@ const Header = ({
           <i className='cart-responsive fa-solid fa-home'></i>
         </Link>
 
-        <Link to='/cart' className='mobile-cart-count'>
+        <Link to='/cart' className='mobile-cart-count' ref={cartIconMobileRef}>
           <i className='cart-responsive fa-solid fa-cart-shopping'></i>
           {totalCartItems > 0 && (
             <span className='cart-count'> {totalCartItems}</span>
@@ -169,7 +191,11 @@ const Header = ({
             onClick={closeMenu}
             style={{ cursor: 'pointer' }}
           >
-            <Link to='/cart' className='cart-count-header-desktop'>
+            <Link
+              to='/cart'
+              className='cart-count-header-desktop'
+              ref={cartIconDesktopRef}
+            >
               <i className='fa-solid fa-cart-shopping'></i>
               <span className='cart-count'> {totalCartItems}</span>
             </Link>
