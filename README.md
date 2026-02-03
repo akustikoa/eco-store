@@ -96,6 +96,6 @@ enhanceProductWithEcoData();
 
 ## ✨ Authorship
 
-Developed by **[Xavier Prat]**
+Developed by **Xavier Prat**
 🔗 Connect with me on [LinkedIn](https://linkedin.com/in/xavierprat)
 Frontend Developer — React · Angular · JavaScript
