@@ -1,5 +1,5 @@
 import { useCart } from './UseCart';
-import { useNavigate } from 'react-router-dom';
+
 const ProductCard = ({
   id,
   description,
@@ -16,7 +16,6 @@ const ProductCard = ({
   isFavorite,
 }) => {
   const { cart, addToCart, removeFromCart } = useCart(); //import from context
-  const navigate = useNavigate();
 
   //create product object
   const product = {
