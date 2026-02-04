@@ -8,11 +8,11 @@ tracking their environmental impact.
 
 ## 📸 Preview
 
-## 📸 Screenshots
-
-| Home                                        | Cart                                        | Favorites                                   |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| ![](./src/assets/ecostore-mockup-home.webp) | ![](./src/assets/ecostore-mockup-cart.webp) | ![](./src/assets/ecostore-mockup-menu.webp) |
+<div align="center">
+  <img src="./screenshots/ecostore-mockup-home.webp" width="240" style="margin: 0 8px;"/>
+  <img src="./screenshots/ecostore-mockup-cart.webp" width="240" style="margin: 0 8px;"/>
+  <img src="./screenshots/ecostore-mockup-menu.webp" width="240" style="margin: 0 8px;"/>
+</div>
 
 ## 🚀 Live Demo
 
