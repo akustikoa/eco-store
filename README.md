@@ -6,6 +6,12 @@ tracking their environmental impact.
 
 ---
 
+## 📸 Preview
+
+<p align="center">
+  <img src="./assets/mockup_ecostore.webp" width="650"/>
+</p>
+
 ## 🚀 Live Demo
 
 👉 https://eco-store-akustikoa.netlify.app/
